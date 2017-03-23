@@ -11,7 +11,7 @@ function build_jetpack_source () {
   # built files are left in ./jetpack/_inc/build
   cd jetpack &&
   # docker run --rm -it -v $(pwd):/jetpack -w /jetpack --name jetpack node:6 curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.17.8 && npm run build
-    docker run --rm -it -v $(pwd):/jetpack -w /jetpack --name jetpack node:6 /bin/bash -c "rm /usr/local/bin/yarn && apt-get update && apt-get install php5-cli && curl -s -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.17.9 && PATH=/root/.yarn/bin:$PATH bash -c 'yarn distclean && yarn build'" &&
+    docker run --rm -it -v $(pwd):/jetpack -w /jetpack --name jetpack node:6 /bin/bash -c "rm /usr/local/bin/yarn && apt-get update && apt-get -y install php5-cli && curl -s -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.17.9 && PATH=/root/.yarn/bin:$PATH bash -c 'yarn distclean && yarn build'" &&
     # docker run -e YARN_VERSION='0.17.9'  --rm -it -v $(pwd):/jetpack -w /jetpack --name jetpack node:6 /bin/bash -c "npm run build" &&
     # docker run -e YARN_VERSION='0.18.2'  --rm -it -v $(pwd):/jetpack -w /jetpack --name jetpack node:6 /bin/bash -c "npm install yarn@0.18.2 && npm run build" &&
     cd ..
